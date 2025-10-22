@@ -19,6 +19,7 @@ rec {
     ./apps/hyprland
     ./apps/hyprlock
     ./apps/hypridle
+    ./apps/waybar
   ];
 
   home.shellAliases = {
