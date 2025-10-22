@@ -20,6 +20,7 @@ rec {
     ./apps/hyprlock
     ./apps/hypridle
     ./apps/waybar
+    ./apps/keybase
   ];
 
   home.shellAliases = {
