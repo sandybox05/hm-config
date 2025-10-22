@@ -4,6 +4,9 @@
   pkgs,
   ...
 }:
+let
+  theme = (import ./theme);
+in
 rec {
   programs.home-manager.enable = true;
   home.username = "sandybox";
