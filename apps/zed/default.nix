@@ -10,7 +10,6 @@
     package = pkgs-unstable.zed-editor;
     extensions = [
       "nix"
-      "ltex"
     ];
     userSettings = {
       ui_font_size = 20;

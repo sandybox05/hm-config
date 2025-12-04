@@ -21,6 +21,13 @@ rec {
     ./apps/hypridle
     ./apps/waybar
     ./apps/keybase
+    ./apps/podman
+    ./apps/vscode
+  ];
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$HOME/.local/share/pnpm"
   ];
 
   home.shellAliases = {
@@ -155,11 +162,6 @@ rec {
   programs.nushell.enable = true;
 
   programs.starship.enable = true;
-
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode.fhs;
-  };
 
   programs.obs-studio = {
     enable = true;
