@@ -10,10 +10,12 @@ in
 
     settings = {
       font-size = 16;
-      font-family = theme.console-font;
+      font-family = theme.font.console;
       font-feature = "calt";
       background-opacity = 0.7;
-      theme = "tokyonight";
+      background-blur = true;
+      cursor-style = "bar";
+      theme = "Ghostty Default Style Dark";
       clipboard-paste-protection = false;
       keybind = [
         "ctrl+q=new_tab"

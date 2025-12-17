@@ -24,6 +24,7 @@ in
         ];
         modules-right = [
           "battery"
+          "disk"
           "memory"
           "cpu"
           "network"
@@ -35,13 +36,21 @@ in
           tooltip = false;
         };
         battery = {
+          format = "BAT {capacity}%";
+          format-charging = "CHG {capacity}%";
+          format-plugged = "FULL {capacity}%";
           states = {
             warning = 30;
             critial = 15;
           };
         };
+        disk = {
+          path = "/";
+          format = "DISK {percentage_used}%";
+          tooltip-format = "{used} / {total}";
+        };
         memory = {
-          format = "MEM {used:0.1f}G/{total:0.1f}G";
+          format = "MEM {percentage}%";
           tooltip = false;
         };
         cpu = {
@@ -68,18 +77,18 @@ in
 
     style = ''
       * {
-        font-family: "${theme.console-font}";
+        font-family: "${theme.font.console}";
         font-size: 1rem;
         border: none;
       }
 
       window#waybar {
         background: none;
-        color: ${theme.fg};
+        color: ${theme.foreground};
       }
 
       .modules-left, .modules-right, #window {
-        background: ${theme.bg-080};
+        background: ${theme.rgba.background-80};
         margin: 0.2rem 1rem;
         padding: 0 1rem;
         border-radius: 1rem;
@@ -97,68 +106,75 @@ in
       }
 
       #workspaces button:hover {
-        background: ${theme.fg};
-        color: ${theme.bg};
+        background: ${theme.foreground};
+        color: ${theme.background};
       }
 
       #workspaces button.focused {
-        background: ${theme.primary};
-        color: ${theme.bg};
+        background: ${theme.semantic.primary};
+        color: ${theme.background};
       }
 
       #workspaces button.urgent {
-        background: ${theme.urgent};
-        color: ${theme.bg};
+        background: ${theme.semantic.urgent};
+        color: ${theme.background};
       }
 
       #battery {
-        border: 1px solid ${theme.yellow};
+        border: 1px solid ${theme.palette.yellow};
         border-radius: 0.5rem;
         padding: 0 0.5rem;
         margin: 0.3rem 0;
       }
 
       #battery.warning {
-        background: ${theme.yellow};
-        color: ${theme.bg};
+        background: ${theme.semantic.warning};
+        color: ${theme.background};
       }
 
       #battery.critial {
-        border: 1px solid ${theme.red};
-        background: ${theme.red};
-        color: ${theme.bg};
+        border: 1px solid ${theme.semantic.error};
+        background: ${theme.semantic.error};
+        color: ${theme.background};
+      }
+
+      #disk {
+        border: 1px solid ${theme.palette.magenta};
+        border-radius: 0.5rem;
+        padding: 0 0.5rem;
+        margin: 0.3rem 0;
       }
 
       #memory {
-        border: 1px solid ${theme.blue};
+        border: 1px solid ${theme.palette.blue};
         border-radius: 0.5rem;
         padding: 0 0.5rem;
         margin: 0.3rem 0;
       }
 
       #cpu {
-        border: 1px solid ${theme.cyan};
+        border: 1px solid ${theme.palette.cyan};
         border-radius: 0.5rem;
         padding: 0 0.5rem;
         margin: 0.3rem 0;
       }
 
       #network {
-        border: 1px solid ${theme.red};
+        border: 1px solid ${theme.palette.red};
         border-radius: 0.5rem;
         padding: 0 0.5rem;
         margin: 0.3rem 0;
       }
 
       #clock {
-        border: 1px solid ${theme.green};
+        border: 1px solid ${theme.palette.green};
         border-radius: 0.5rem;
         padding: 0 0.5rem;
         margin: 0.3rem 0;
       }
 
       #tray {
-        border: 1px solid ${theme.magenta};
+        border: 1px solid ${theme.palette.magenta};
         border-radius: 0.5rem;
         padding: 0 0.5rem;
         margin: 0.3rem 0;

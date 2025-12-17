@@ -51,7 +51,7 @@ rec {
     jq
     nfs-utils
     pdfgrep
-    poppler_utils
+    poppler-utils
     unzip
     ffmpeg
 
@@ -65,6 +65,7 @@ rec {
     _1password-gui
     insomnia
     jetbrains.datagrip
+    slack
 
     cargo-make
     cbc
@@ -82,6 +83,7 @@ rec {
     devpod-desktop
     mise
     terraform
+    libsecret # for secret-tool
   ];
 
   home.pointerCursor = {
@@ -100,7 +102,7 @@ rec {
 
   gtk = {
     enable = true;
-    font.name = theme.console-font;
+    font.name = theme.font.console;
     theme = {
       package = pkgs.orchis-theme;
       name = "Orchis-Dark";
@@ -133,11 +135,9 @@ rec {
 
   programs.git = {
     enable = true;
-    userName = "sandybox";
-    userEmail = "sandybox05@gmail.com";
-    diff-so-fancy.enable = true;
-    diff-so-fancy.stripLeadingSymbols = false;
-    extraConfig = {
+    settings = {
+      user.name = "sandybox";
+      user.email = "sandybox05@gmail.com";
       core = {
         editor = "hx";
         quotepath = false;
@@ -150,6 +150,12 @@ rec {
       pull.rebase = true;
       credential.helper = "cache --timeout=3600";
     };
+  };
+
+  programs.diff-so-fancy = {
+    enable = true;
+    enableGitIntegration = true;
+    settings.stripLeadingSymbols = false;
   };
 
   programs.zsh = {
@@ -168,7 +174,7 @@ rec {
     plugins = with pkgs.obs-studio-plugins; [
       wlrobs
       obs-pipewire-audio-capture
-      obs-webkitgtk
+      # obs-webkitgtk
       advanced-scene-switcher
     ];
   };
