@@ -84,6 +84,9 @@ rec {
     mise
     terraform
     libsecret # for secret-tool
+
+    nixd
+    nixfmt-rfc-style # for nix
   ];
 
   home.pointerCursor = {

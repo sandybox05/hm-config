@@ -28,6 +28,7 @@ in
           "memory"
           "cpu"
           "network"
+          "custom/user"
           "tray"
         ];
 
@@ -68,6 +69,11 @@ in
           format = "{:%Y-%m-%d %H:%M:%S}";
           interval = 1;
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        };
+        "custom/user" = {
+          exec = "whoami";
+          interval = "once";
+          format = "USER {}";
         };
         tray = {
           spacing = 6;
@@ -167,6 +173,13 @@ in
       }
 
       #clock {
+        border: 1px solid ${theme.palette.green};
+        border-radius: 0.5rem;
+        padding: 0 0.5rem;
+        margin: 0.3rem 0;
+      }
+
+      #custom-user {
         border: 1px solid ${theme.palette.green};
         border-radius: 0.5rem;
         padding: 0 0.5rem;
