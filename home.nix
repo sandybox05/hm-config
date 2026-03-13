@@ -63,8 +63,10 @@ rec {
     google-chrome
     pavucontrol
     _1password-gui
+    _1password-cli
     insomnia
     jetbrains.datagrip
+    dbgate
     slack
 
     cargo-make
